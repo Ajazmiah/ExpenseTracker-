@@ -1,0 +1,46 @@
+/* YourStylesModule.module.css */
+
+.legend {
+    /* Add your styles here */
+  }
+  
+  .form-group {
+    /* Add your styles here */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 70%;
+    margin: 0;
+    margin: 0 auto;
+    min-width: 300px;
+    text-align: left;
+  }
+  
+  .label {
+    /* Add your styles here */
+  }
+  
+  .input {
+    /* Add your styles here */
+
+    padding: 15px;
+    outline: none;
+    border-radius: 10px;
+    border: 1px solid;
+    margin: 5px;
+  }
+  
+  .button {
+    /* Add your styles here */
+    width: 200px;
+    margin: 20px;
+    margin-left: 0px;
+    outline: none;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    background: #1a8441c7;
+    color: #fff;
+    cursor: pointer;
+  }
+  

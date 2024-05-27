@@ -1,0 +1,31 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+
+
+  --color-light-gray: #F1F7FF;
+  --color-white: #fff;
+
+
+}
+.border-radius {
+  border-radius: 10px;
+}
+.mainContent {
+  flex: 3;
+    margin: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1)
+}
+
+
+body {
+  background-color: #f6eae2;
+}

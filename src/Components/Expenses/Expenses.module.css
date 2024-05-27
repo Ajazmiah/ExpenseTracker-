@@ -1,0 +1,56 @@
+/* TransactionList.module.css */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --background-color: #f8f9fa;
+    --border-color: #e0e0e0;
+    --font-family: 'Roboto', sans-serif;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background-color: var(--background-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .transaction {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: #fff;
+    transition: transform 0.2s;
+  }
+  
+  .transaction:hover {
+    transform: translateY(-4px);
+  }
+  
+  .description {
+    font-family: var(--font-family);
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+  }
+  
+  .date, .amount, .category {
+    font-family: var(--font-family);
+    font-size: 0.875rem;
+    color: var(--secondary-color);
+  }
+  
+  .amount {
+    color: var(--primary-color);
+  }
+  
+  .category {
+    color: #ff5722;
+  }
+  
