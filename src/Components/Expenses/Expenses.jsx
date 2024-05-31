@@ -9,10 +9,9 @@ function Expenses({ expenses }) {
 
   React.useEffect(() => {
     setFilteredExpenses(
-      expenses.filter((ex) => ex.description.toLowerCase().includes(query))
+     expenses.filter((ex) => ex.description.toLowerCase().includes(query))
     );
 
-    console.log("filtered", filterExpenses);
   }, [query]);
 
   return (
