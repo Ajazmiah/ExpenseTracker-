@@ -30,6 +30,14 @@ function Form({ expenses, setExpenses }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setExpenses((prev) => [...prev, formData]);
+
+    setFormData({
+      id: generateTempId(),
+      description: "",
+      date: "",
+      amount: "",
+      category: "",
+    });
   };
 
   // Function to handle changes in form inputs
