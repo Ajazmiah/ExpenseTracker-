@@ -14,6 +14,8 @@ function Expenses({ expenses }) {
 
   }, [query]);
 
+  const MSG = (expenses.length > 0 && filterExpenses.length < 1 ) ? 'No match' : 'No Expenses Added '
+
   return (
     <div className={styles.container}>
       <input
@@ -23,8 +25,8 @@ function Expenses({ expenses }) {
         className={styles["search-input"]}
         onChange={handleChange}
       />
-      {expenses.length <= 0 ? (
-        <p>There are not expense yet</p>
+      {filterExpenses.length < 1 ? (
+        <p>{MSG}</p>
       ) : (
         filterExpenses.map((transaction, index) => (
           <div key={transaction.id} className={styles.transaction}>
