@@ -16,6 +16,13 @@ function Expenses({ expenses }) {
 
   const MSG = (expenses.length > 0 && filterExpenses.length < 1 ) ? 'No match' : 'No Expenses Added '
 
+  const TOTAL_EXPENSE = expenses.reduce((acc, {amount}) => {
+    console.log('amount', amount)
+    return acc + +amount
+  },0)
+
+  console.log("TOT", TOTAL_EXPENSE)
+
   return (
     <div className={styles.container}>
       <input
@@ -37,6 +44,7 @@ function Expenses({ expenses }) {
           </div>
         ))
       )}
+       <span>Total Expenses: ${TOTAL_EXPENSE }</span>
     </div>
   );
 }

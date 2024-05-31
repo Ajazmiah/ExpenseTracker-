@@ -35,7 +35,7 @@ function Form({ expenses, setExpenses }) {
       id: generateTempId(),
       description: "",
       date: "",
-      amount: "",
+      amount: '',
       category: "",
     });
   };
@@ -43,6 +43,7 @@ function Form({ expenses, setExpenses }) {
   // Function to handle changes in form inputs
   const handleChange = (e) => {
     const { name, value } = e.target;
+    
     setFormData({
       ...formData,
       [name]: value,
