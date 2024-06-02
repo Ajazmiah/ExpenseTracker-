@@ -30,17 +30,22 @@ function Form({ expenses, setExpenses }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setExpenses((prev) => [...prev, formData]);
+    console.log("formData", formData)
 
     setFormData({
-    
+      id: generateTempId(),
+      description: "",
+      date: "",
+      amount: "",
+      category: "",
     });
   };
 
   // Function to handle changes in form inputs
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    let { name, value } = e.target;
 
- 
+    if(value === 'Other') name = 'otherCategory'
 
 
     setFormData({
@@ -49,6 +54,8 @@ function Form({ expenses, setExpenses }) {
     });
   };
 
+
+ 
 
 
   return (
@@ -112,13 +119,13 @@ function Form({ expenses, setExpenses }) {
             ))}
           </select>
 
-          {formData.category === "Other" ? (
+          {formData['otherCategory'] === 'Other' ? (
             <input
               type="text"
               id="category"
-              name="otherCategory"
+              name="category"
               placeholder="Category"
-              value={formData.otherCategory}
+              value={formData.category}
               onChange={handleChange}
               className={styles["input"]}
             />
