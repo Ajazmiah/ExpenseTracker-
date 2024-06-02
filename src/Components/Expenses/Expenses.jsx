@@ -35,14 +35,18 @@ function Expenses({ expenses }) {
       {filterExpenses.length < 1 ? (
         <p>{MSG}</p>
       ) : (
-        filterExpenses.map((transaction, index) => (
-          <div key={transaction.id} className={styles.transaction}>
+        filterExpenses.map((transaction, index) =>  {
+          let category = transaction?.category
+          if(transaction.category === 'Other') {
+            category = transaction?.otherCategory
+          }
+          return (  <div key={transaction.id} className={styles.transaction}>
             <div className={styles.description}>{transaction.description}</div>
             <div className={styles.date}>{transaction.date}</div>
             <div className={styles.amount}>${transaction.amount}</div>
-            <div className={styles.category}>{transaction.category}</div>
-          </div>
-        ))
+            <div className={styles.category}>{category}</div>
+          </div>)
+        })
       )}
        <span>Total Expenses: ${TOTAL_EXPENSE }</span>
     </div>

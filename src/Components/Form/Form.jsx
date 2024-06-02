@@ -32,25 +32,24 @@ function Form({ expenses, setExpenses }) {
     setExpenses((prev) => [...prev, formData]);
 
     setFormData({
-      id: generateTempId(),
-      description: "",
-      date: "",
-      amount: '',
-      category: "",
+    
     });
   };
 
   // Function to handle changes in form inputs
   const handleChange = (e) => {
     const { name, value } = e.target;
-    
+
+ 
+
+
     setFormData({
       ...formData,
       [name]: value,
     });
   };
 
-  console.log(formData)
+
 
   return (
     <div>
@@ -117,7 +116,7 @@ function Form({ expenses, setExpenses }) {
             <input
               type="text"
               id="category"
-              name="category"
+              name="otherCategory"
               placeholder="Category"
               value={formData.otherCategory}
               onChange={handleChange}
