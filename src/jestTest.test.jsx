@@ -1,9 +1,6 @@
-import { add } from "./testJest";
+const { add } = require('./testJest');
 
 
 test('adds two numbers', () => { 
-
-    const sum = add(5, 5)
-
-    expect(sum.toBe(10))
+    expect(add(5, 5)).toBe(10)
  })
