@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styles from "./Form.module.css";
 function Form({ expenses, setExpenses }) {
   const generateTempId = () => Math.random().toString(36).substr(2, 9);
@@ -11,15 +11,10 @@ function Form({ expenses, setExpenses }) {
     category: "",
   });
 
-const [description, setDescription] = useState("");
-const [date, setDate] = useState("");
-const [amount, setAmount] = useState("");
-const [category, setCategory] = useState("");
-
-
-
-
-
+  const refDescription = useRef(null);
+  const refDate = useRef(null);
+  const refAmount = useRef(null);
+  const refCategory = useRef(null);
 
   const categories = [
     "Food & Dining",
@@ -38,7 +33,6 @@ const [category, setCategory] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
     setExpenses((prev) => [...prev, formData]);
-    console.log("formData", formData)
 
     setFormData({
       id: generateTempId(),
@@ -47,24 +41,28 @@ const [category, setCategory] = useState("");
       amount: "",
       category: "",
     });
+
+    //localStorage.setItem('expenses', JSON.stringify(expenses))
   };
+
+  useEffect(() => {
+    // console.log('ex', JSON.parse(localStorage.getItem('items')) || [])
+    localStorage.setItem('expenses', JSON.stringify(expenses))
+  },[expenses])
+
+
 
   // Function to handle changes in form inputs
   const handleChange = (e) => {
     let { name, value } = e.target;
 
-    if(value === 'Other') name = 'otherCategory'
-
+    if (value === "Other") name = "otherCategory";
 
     setFormData({
       ...formData,
       [name]: value,
     });
   };
-
-
- 
-
 
   return (
     <div>
@@ -79,6 +77,7 @@ const [category, setCategory] = useState("");
             type="text"
             id="description"
             name="description"
+            ref={refDescription}
             placeholder="Description"
             value={formData.description}
             onChange={handleChange}
@@ -93,6 +92,7 @@ const [category, setCategory] = useState("");
           <input
             type="date"
             id="date"
+            ref={refDate}
             name="date"
             value={formData.date}
             onChange={handleChange}
@@ -106,6 +106,7 @@ const [category, setCategory] = useState("");
           </label>
           <input
             type="number"
+            ref={refAmount}
             id="amount"
             name="amount"
             placeholder="Amount"
@@ -119,7 +120,13 @@ const [category, setCategory] = useState("");
           <label htmlFor="category" className={styles["label"]}>
             Category
           </label>
-          <select id="category" name="category" className={styles["input"]} onChange={handleChange}>
+          <select
+            id="category"
+            name="category"
+            ref={refCategory}
+            className={styles["input"]}
+            onChange={handleChange}
+          >
             {categories.map((category, index) => (
               <option key={index} value={category}>
                 {category}
@@ -127,17 +134,18 @@ const [category, setCategory] = useState("");
             ))}
           </select>
 
-          {formData['otherCategory'] === 'Other' ? (
+          {formData["otherCategory"] === "Other" ? (
             <input
               type="text"
               id="category"
               name="category"
+              ref={refCategory}
               placeholder="Category"
               value={formData.category}
               onChange={handleChange}
               className={styles["input"]}
             />
-          ) : null}    
+          ) : null}
         </div>
 
         <div className={styles["form-group"]}>

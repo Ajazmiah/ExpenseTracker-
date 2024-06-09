@@ -1,7 +1,7 @@
 // testJest.js
-const add = (a, b) => {
+export const add = (a, b) => {
     return a + b;
   };
   
-  module.exports = { add };
+
   

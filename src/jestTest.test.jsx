@@ -1,4 +1,4 @@
-const { add } = require('./testJest');
+import { add } from "./testJest"
 
 
 test('adds two numbers', () => { 

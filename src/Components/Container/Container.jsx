@@ -5,7 +5,7 @@ import MainContent from '../MainContent/MainContent'
 
 function Container({children}) {
     const [LazyComponent , setLazyComponent] = React.useState('form')
-    const [expenses , setExpenses] = React.useState([])
+    const [expenses , setExpenses] = React.useState(JSON.parse(localStorage.getItem('expenses')) || [])
   return (
     <div className={styles.container}>
         <Navigation setLazyComponent={setLazyComponent} LazyComponent={LazyComponent}/>
