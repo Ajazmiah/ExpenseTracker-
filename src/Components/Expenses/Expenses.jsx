@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Expenses.module.css";
+import { FaEdit } from "react-icons/fa";
 
 function Expenses({ expenses }) {
   const [query, setQuery] = useState("");
@@ -41,6 +42,7 @@ function Expenses({ expenses }) {
             <div className={styles.date}>{transaction.date}</div>
             <div className={styles.amount}>${transaction.amount}</div>
             <div className={styles.category}>{transaction.category}</div>
+            <><FaEdit style={{cursor:'pointer'}}/></>
           </div>)
         })
       )}
