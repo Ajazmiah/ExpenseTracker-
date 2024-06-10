@@ -1,17 +1,24 @@
-import React, {Suspense, lazy} from 'react'
+import React, {Suspense, lazy, useState} from 'react'
 import styles from './MainContent.module.css'
 import Expenses from '../Expenses/Expenses'
 
 const Form = lazy(() => import('../Form/Form'))
 
 
-function MainContent({setLazyComponent , LazyComponent, expenses, setExpenses}) {
+function MainContent({LazyComponent, expenses, setExpenses,handleLazyComponent}) {
+
+  const [id , setId] = useState(null)
+
+  const handleEditExpense = (com ,id) => {
+    console.log('com', com)
+    handleLazyComponent(com)
+    setId(id)
+  }
 
     const LazyLoadComponent = {
-        form: <Form setExpenses={setExpenses} expenses={expenses}/>,
-        expenses: <Expenses setExpenses={setExpenses} expenses={expenses} />
-        
-
+        form: <Form setExpenses={setExpenses} expenses={expenses} id={id}/>,
+        expenses: <Expenses handleEditExpense={handleEditExpense} expenses={expenses} />
+      
     }
 
 

@@ -1,15 +1,19 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./Form.module.css";
-function Form({ expenses, setExpenses }) {
+function Form({ expenses, setExpenses, id }) {
   const generateTempId = () => Math.random().toString(36).substr(2, 9);
 
-  const [formData, setFormData] = useState({
+
+  const edit = expenses.filter(ex => ex.id === id)[0]
+
+  const [formData, setFormData] = useState(id ? edit :{
     id: generateTempId(),
     description: "",
     date: "",
     amount: "",
     category: "",
   });
+  console.log("ID", id)
 
   const refDescription = useRef(null);
   const refDate = useRef(null);
@@ -29,6 +33,10 @@ function Form({ expenses, setExpenses }) {
     "Family & Friends",
     "Other",
   ];
+
+
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();

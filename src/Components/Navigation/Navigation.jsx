@@ -2,19 +2,19 @@ import React from 'react'
 import styles from './Navigation.module.css'
 import { FaPlus, FaUserCircle,FaMoneyBill } from 'react-icons/fa';
 
-function Navigation({setLazyComponent}) {
+function Navigation({handleLazyComponent}) {
   return (
     <nav className={`${styles.navigation} border-radius`}>
         <ul>
-            <li onClick={() => setLazyComponent('profile')}>
+            <li onClick={() => handleLazyComponent('profile')}>
             <span><FaUserCircle className={styles.icon}/></span>
               <span>Profile</span>
             </li>
-            <li onClick={() => setLazyComponent('form')}>
+            <li onClick={() => handleLazyComponent('form')}>
               <span><FaPlus className={styles.icon}/></span>
               <span>Add Expenses</span>
             </li>
-            <li onClick={() => setLazyComponent('expenses')}>
+            <li onClick={() => handleLazyComponent('expenses')}>
               <span><FaMoneyBill className={styles.icon}/></span>
               <span>All Expenses</span>
             </li>
