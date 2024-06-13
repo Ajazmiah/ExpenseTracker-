@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import styles from "./Expenses.module.css";
 import { FaEdit } from "react-icons/fa";
+import useExpenses from "../../Hooks/useExpenses";
 
-function Expenses({ expenses, handleEditExpense }) {
+function Expenses({ handleEditExpense }) {
   const [query, setQuery] = useState("");
+  const [expenses , setExpenses] = useExpenses()
   const [filterExpenses, setFilteredExpenses] = useState(expenses);
 
   const handleChange = (e) => setQuery(e.target.value.toLowerCase());

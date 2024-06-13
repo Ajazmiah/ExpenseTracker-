@@ -1,8 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./Form.module.css";
-function Form({ expenses, setExpenses, id }) {
+import useExpenses from "../../Hooks/useExpenses";
+
+
+function Form({ id }) {
   const generateTempId = () => Math.random().toString(36).substr(2, 9);
 
+  const [expenses , setExpenses] = useExpenses()
 
   const edit = expenses.filter(ex => ex.id === id)[0]
 

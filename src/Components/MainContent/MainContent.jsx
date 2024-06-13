@@ -20,7 +20,7 @@ function MainContent({LazyComponent ,handleLazyComponent}) {
   }
 
     const LazyLoadComponent = {
-        form: <Form setExpenses={setExpenses} expenses={expenses} id={id}/>,
+        form: <Form  id={id}/>,
         expenses: <Expenses handleEditExpense={handleEditExpense} expenses={expenses} />
       
     }
