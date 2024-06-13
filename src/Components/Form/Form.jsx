@@ -2,22 +2,25 @@ import React, { useState, useRef, useEffect } from "react";
 import styles from "./Form.module.css";
 import useExpenses from "../../Hooks/useExpenses";
 
-
 function Form({ id }) {
   const generateTempId = () => Math.random().toString(36).substr(2, 9);
 
-  const [expenses , setExpenses] = useExpenses()
+  const [expenses, setExpenses] = useExpenses();
 
-  const edit = expenses.filter(ex => ex.id === id)[0]
+  const edit = expenses.filter((ex) => ex.id === id)[0];
 
-  const [formData, setFormData] = useState(id ? edit :{
-    id: generateTempId(),
-    description: "",
-    date: "",
-    amount: "",
-    category: "",
-  });
-  console.log("ID", id)
+  const [formData, setFormData] = useState(
+    id
+      ? edit
+      : {
+          id: generateTempId(),
+          description: "",
+          date: "",
+          amount: "",
+          category: "",
+        }
+  );
+  console.log("ID", id);
 
   const refDescription = useRef(null);
   const refDate = useRef(null);
@@ -38,10 +41,6 @@ function Form({ id }) {
     "Other",
   ];
 
-
-
-
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setExpenses((prev) => [...prev, formData]);
@@ -59,10 +58,8 @@ function Form({ id }) {
 
   useEffect(() => {
     // console.log('ex', JSON.parse(localStorage.getItem('items')) || [])
-    localStorage.setItem('expenses', JSON.stringify(expenses))
-  },[expenses])
-
-
+    localStorage.setItem("expenses", JSON.stringify(expenses));
+  }, [expenses]);
 
   // Function to handle changes in form inputs
   const handleChange = (e) => {
