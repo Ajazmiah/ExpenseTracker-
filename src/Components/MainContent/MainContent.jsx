@@ -1,11 +1,15 @@
 import React, {Suspense, lazy, useState} from 'react'
 import styles from './MainContent.module.css'
 import Expenses from '../Expenses/Expenses'
+import useExpenses from '../../Hooks/useExpenses'
 
 const Form = lazy(() => import('../Form/Form'))
 
 
-function MainContent({LazyComponent, expenses, setExpenses,handleLazyComponent}) {
+
+
+function MainContent({LazyComponent ,handleLazyComponent}) {
+  const [expenses , setExpenses] = useExpenses()
 
   const [id , setId] = useState(null)
 
