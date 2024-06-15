@@ -5,7 +5,7 @@ import useExpenses from "../../Hooks/useExpenses";
 
 function Expenses({ handleEditExpense }) {
   const [query, setQuery] = useState("");
-  const [expenses , setExpenses] = useExpenses()
+  const [expenses, setExpenses] = useExpenses();
   const [filterExpenses, setFilteredExpenses] = useState(expenses);
 
   const handleChange = (e) => setQuery(e.target.value.toLowerCase());
@@ -52,7 +52,7 @@ function Expenses({ handleEditExpense }) {
               <>
                 <FaEdit
                   style={{ cursor: "pointer" }}
-                  onClick={() => handleEditExpense('form', transaction.id)}
+                  onClick={() => handleEditExpense("form", transaction.id)}
                 />
               </>
             </div>

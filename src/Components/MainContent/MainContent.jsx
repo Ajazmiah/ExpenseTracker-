@@ -1,26 +1,22 @@
 import React, { Suspense, lazy, useState } from "react";
 import styles from "./MainContent.module.css";
 import Expenses from "../Expenses/Expenses";
-import useExpenses from "../../Hooks/useExpenses";
+
 
 const Form = lazy(() => import("../Form/Form"));
 
 function MainContent({ LazyComponent, handleLazyComponent }) {
-  const [expenses, setExpenses] = useExpenses();
 
   const [id, setId] = useState(null);
 
   const handleEditExpense = (com, id) => {
-    console.log("com", com);
     handleLazyComponent(com);
     setId(id);
   };
 
   const LazyLoadComponent = {
     form: <Form id={id} />,
-    expenses: (
-      <Expenses handleEditExpense={handleEditExpense} expenses={expenses} />
-    ),
+    expenses: <Expenses handleEditExpense={handleEditExpense} />,
   };
 
   const Styles = `${styles.mainContent} border-radius`;
