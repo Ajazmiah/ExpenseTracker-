@@ -1,16 +1,10 @@
-import { useState } from 'react'
+import { useState } from "react";
 
-import './App.css'
-import Container from './Components/Container/Container'
+import "./App.css";
+import Container from "./Components/Container/Container";
 
 function App() {
-
-
-  return (
-    <>
-    <Container/>
-    </>
-  )
+  return <Container />;
 }
 
-export default App
+export default App;
