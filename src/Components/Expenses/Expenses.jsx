@@ -21,12 +21,12 @@ function Expenses({ handleEditExpense }) {
       ? "No match"
       : "No Expenses Added ";
 
-  const TOTAL_EXPENSE = expenses.reduce((acc, { amount }) => {
+  const TOTAL_EXPENSE = filterExpenses.reduce((acc, { amount }) => {
     console.log("amount", amount);
     return acc + +amount;
   }, 0);
 
-  console.log("TOT", TOTAL_EXPENSE);
+  const HAS_EXPENSES = filterExpenses.length > 0 
 
   return (
     <div className={styles.container}>
@@ -37,9 +37,7 @@ function Expenses({ handleEditExpense }) {
         className={styles["search-input"]}
         onChange={handleChange}
       />
-      {filterExpenses.length < 1 ? (
-        <p>{MSG}</p>
-      ) : (
+      { HAS_EXPENSES ? (
         filterExpenses.map((transaction, index) => {
           return (
             <div key={transaction.id} className={styles.transaction}>
@@ -58,7 +56,7 @@ function Expenses({ handleEditExpense }) {
             </div>
           );
         })
-      )}
+      ): <p>{MSG}</p>}
       <span>Total Expenses: ${TOTAL_EXPENSE}</span>
     </div>
   );
