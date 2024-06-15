@@ -4,8 +4,9 @@ import useExpenses from "../../Hooks/useExpenses";
 
 function Form({ id }) {
   const generateTempId = () => Math.random().toString(36).substr(2, 9);
+  const EXPENSE_KEY = 'expenses'
 
-  const [expenses, setExpenses, handleExpenses] = useExpenses();
+  const [expenses, setExpenses, handleSetExpenses] = useExpenses(EXPENSE_KEY);
 
   const edit = expenses.filter((ex) => ex.id === id)[0];
 
@@ -41,7 +42,7 @@ function Form({ id }) {
     "Other",
   ];
 
-  const CATEGORY_OTHER = 'Other'
+  const CATEGORY_OTHER = "Other";
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -54,11 +55,10 @@ function Form({ id }) {
       amount: "",
       category: "",
     });
-
   };
 
   useEffect(() => {
-    localStorage.setItem("expenses", JSON.stringify(expenses));
+    handleSetExpenses();
   }, [expenses]);
 
   // Function to handle changes in form inputs
