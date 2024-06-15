@@ -4,7 +4,13 @@ const useExpenses = () => {
     JSON.parse(localStorage.getItem("expenses")) || []
   );
 
-  return [expenses, setExpenses];
+  
+
+  const handleExpenses = (updatedExpenses) => {
+    localStorage.setItem("expenses", JSON.stringify(updatedExpenses));
+  }
+
+  return [expenses, setExpenses, handleExpenses];
 };
 
 export default useExpenses;

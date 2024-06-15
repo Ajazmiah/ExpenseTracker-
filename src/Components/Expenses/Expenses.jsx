@@ -22,7 +22,6 @@ function Expenses({ handleEditExpense }) {
       : "No Expenses Added ";
 
   const TOTAL_EXPENSE = filterExpenses.reduce((acc, { amount }) => {
-    console.log("amount", amount);
     return acc + +amount;
   }, 0);
 

@@ -5,7 +5,7 @@ import useExpenses from "../../Hooks/useExpenses";
 function Form({ id }) {
   const generateTempId = () => Math.random().toString(36).substr(2, 9);
 
-  const [expenses, setExpenses] = useExpenses();
+  const [expenses, setExpenses, handleExpenses] = useExpenses();
 
   const edit = expenses.filter((ex) => ex.id === id)[0];
 
@@ -41,6 +41,8 @@ function Form({ id }) {
     "Other",
   ];
 
+  const CATEGORY_OTHER = 'Other'
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setExpenses((prev) => [...prev, formData]);
@@ -53,11 +55,9 @@ function Form({ id }) {
       category: "",
     });
 
-    //localStorage.setItem('expenses', JSON.stringify(expenses))
   };
 
   useEffect(() => {
-    // console.log('ex', JSON.parse(localStorage.getItem('items')) || [])
     localStorage.setItem("expenses", JSON.stringify(expenses));
   }, [expenses]);
 
@@ -65,7 +65,7 @@ function Form({ id }) {
   const handleChange = (e) => {
     let { name, value } = e.target;
 
-    if (value === "Other") name = "otherCategory";
+    if (value === CATEGORY_OTHER) name = "otherCategory";
 
     setFormData({
       ...formData,
