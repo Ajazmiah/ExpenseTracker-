@@ -2,12 +2,11 @@ import React from "react";
 import styles from "./Container.module.css";
 import Navigation from "../Navigation/Navigation";
 import MainContent from "../MainContent/MainContent";
+import useExpenses from "../../Hooks/useExpenses";
 
 function Container({ children }) {
   const [LazyComponent, setLazyComponent] = React.useState("form");
-  const [expenses, setExpenses] = React.useState(
-    JSON.parse(localStorage.getItem("expenses")) || []
-  );
+
 
   const handleLazyComponent = (com) => setLazyComponent(com);
 
@@ -19,8 +18,6 @@ function Container({ children }) {
       />
       <MainContent
         handleLazyComponent={handleLazyComponent}
-        setExpenses={setExpenses}
-        expenses={expenses}
         LazyComponent={LazyComponent}
       />
     </div>

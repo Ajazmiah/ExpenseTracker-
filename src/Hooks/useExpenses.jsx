@@ -1,8 +1,10 @@
-import React, {useState} from "react"
+import React, { useState } from "react";
 const useExpenses = () => {
-    const [expenses , setExpenses] = useState(JSON.parse(localStorage.getItem('expenses')) || [])
+  const [expenses, setExpenses] = useState(
+    JSON.parse(localStorage.getItem("expenses")) || []
+  );
 
-    return [expenses , setExpenses]
-}
+  return [expenses, setExpenses];
+};
 
-export default useExpenses
+export default useExpenses;
