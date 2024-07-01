@@ -9,6 +9,9 @@ function Form({ id }) {
   const [expenses, setExpenses, handleSetExpenses] = useExpenses(EXPENSE_KEY);
 
   const edit = expenses.filter((ex) => ex.id === id)[0];
+  console.log(edit)
+
+
 
   const [formData, setFormData] = useState(
     id
@@ -22,6 +25,11 @@ function Form({ id }) {
         }
   );
   console.log("ID", id);
+  const newExpenses = expenses.filter((ex) => {
+    if(ex?.id === edit?.id) {
+      return edit
+    }
+  })
 
   const refDescription = useRef(null);
   const refDate = useRef(null);
@@ -46,6 +54,7 @@ function Form({ id }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if(!edit){
     setExpenses((prev) => [...prev, formData]);
 
     setFormData({
@@ -55,6 +64,10 @@ function Form({ id }) {
       amount: "",
       category: "",
     });
+  }
+  else {
+    setExpenses([formData])
+  }
   };
 
   useEffect(() => {
@@ -64,6 +77,7 @@ function Form({ id }) {
   // Function to handle changes in form inputs
   const handleChange = (e) => {
     let { name, value } = e.target;
+    console.log('value', value)
 
     if (value === CATEGORY_OTHER) name = "otherCategory";
 
