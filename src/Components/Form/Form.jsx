@@ -3,36 +3,10 @@ import styles from "./Form.module.css";
 import useExpenses from "../../Hooks/useExpenses";
 
 function Form({ id }) {
-  
   const refDescription = useRef(null);
   const refDate = useRef(null);
   const refAmount = useRef(null);
   const refCategory = useRef(null);
-
-  const generateTempId = () => Math.random().toString(36).substr(2, 9);
-  const EXPENSE_KEY = 'expenses'
-
-  const [expenses, setExpenses, handleSetExpenses] = useExpenses(EXPENSE_KEY);
-
-  const edit = expenses.filter((ex) => ex.id === id)[0];
-  console.log(edit)
-
-
-
-  const [formData, setFormData] = useState(
-    id
-      ? edit
-      : {
-          id: generateTempId(),
-          description: "",
-          date: "",
-          amount: "",
-          category: "",
-        }
-  );
-
-
-
 
   const categories = [
     "- Select Category -",
@@ -49,24 +23,42 @@ function Form({ id }) {
     "Other",
   ];
 
+  const generateTempId = () => Math.random().toString(36).substr(2, 9);
+  const EXPENSE_KEY = "expenses";
+
+  const [expenses, setExpenses, handleSetExpenses] = useExpenses(EXPENSE_KEY);
+
+  const edit = expenses.filter((ex) => ex.id === id)[0];
+
+  const [formData, setFormData] = useState(
+    id
+      ? edit
+      : {
+          id: generateTempId(),
+          description: "",
+          date: "",
+          amount: "",
+          category: "",
+        }
+  );
+
   const CATEGORY_OTHER = "Other";
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(!edit){
-    setExpenses((prev) => [...prev, formData]);
+    if (!edit) {
+      setExpenses((prev) => [...prev, formData]);
 
-    setFormData({
-      id: generateTempId(),
-      description: "",
-      date: "",
-      amount: "",
-      category: "",
-    });
-  }
-  else {
-    setExpenses([formData])
-  }
+      setFormData({
+        id: generateTempId(),
+        description: "",
+        date: "",
+        amount: "",
+        category: "",
+      });
+    } else {
+      setExpenses([formData]);
+    }
   };
 
   useEffect(() => {
@@ -76,7 +68,6 @@ function Form({ id }) {
   // Function to handle changes in form inputs
   const handleChange = (e) => {
     let { name, value } = e.target;
-    console.log('value', value)
 
     if (value === CATEGORY_OTHER) name = "otherCategory";
 
