@@ -3,6 +3,12 @@ import styles from "./Form.module.css";
 import useExpenses from "../../Hooks/useExpenses";
 
 function Form({ id }) {
+  
+  const refDescription = useRef(null);
+  const refDate = useRef(null);
+  const refAmount = useRef(null);
+  const refCategory = useRef(null);
+
   const generateTempId = () => Math.random().toString(36).substr(2, 9);
   const EXPENSE_KEY = 'expenses'
 
@@ -24,19 +30,12 @@ function Form({ id }) {
           category: "",
         }
   );
-  console.log("ID", id);
-  const newExpenses = expenses.filter((ex) => {
-    if(ex?.id === edit?.id) {
-      return edit
-    }
-  })
 
-  const refDescription = useRef(null);
-  const refDate = useRef(null);
-  const refAmount = useRef(null);
-  const refCategory = useRef(null);
+
+
 
   const categories = [
+    "- Select Category -",
     "Food & Dining",
     "Utilities",
     "Transportation",
